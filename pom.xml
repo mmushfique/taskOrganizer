@@ -12,7 +12,7 @@
 	<artifactId>TaskOrganizer</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
-	<name>TaskOrganizer</name>
+	<name>taskOrganizer</name>
 	<description>An application to manage tasks</description>
 	<url/>
 
