@@ -46,7 +46,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>TaskOrganizer</finalName>
+		<finalName>taskOrganizer</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
