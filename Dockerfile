@@ -1,8 +1,8 @@
 FROM openjdk:8
 
 EXPOSE 8080
-ADD target/bumbleBee.war bumbleBee.war
+ADD target/taskOrganizer.jar taskOrganizer.jar
 ENTRYPOINT ["java","-jar","/taskOrganizer.jar"]
 
-ARG APP_NAME=TaskOrganizer
+ARG APP_NAME=taskOrganizer
 ARG APP_VERSION=0.0.1

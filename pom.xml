@@ -12,7 +12,7 @@
 	<artifactId>TaskOrganizer</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
-	<name>TaskOrganizer</name>
+	<name>taskOrganizer</name>
 	<description>An application to manage tasks</description>
 	<url/>
 
@@ -43,9 +43,15 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
+		<finalName>taskOrganizer</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
