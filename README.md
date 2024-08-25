@@ -5,4 +5,4 @@ To run this application locally
   3-> create a database named task_organizer in mysql
   4-> then alter the usernaem, password, url of database and start the app.
 
-Or can use the app by downloading the dockier image in a docker environment
+Or can use the app by downloading the docker image in a docker environment : docker pull mmushfique12/task_organizer:v1

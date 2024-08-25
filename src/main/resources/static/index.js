@@ -1,3 +1,11 @@
+const dateFormatter=new Intl.DateTimeFormat(undefined,{
+  day:"2-digit",
+  month:"2-digit",
+  year:"numeric",
+  hour:"2-digit",
+  minute:"2-digit"
+})
+
 // Fetch data using Axios when the page is loaded
 window.addEventListener('load', function () {
   axios.get('/api/task')
@@ -35,8 +43,7 @@ function populateTable(data) {
 
     newRow.querySelector('.task-status-dropdown').textContent = item.status;
 
-    newRow.querySelector('.task-due-date').textContent = new Date(item.dueDateTime).toISOString().slice(0, 16);;
-
+    newRow.querySelector('.task-due-date').textContent =dateFormatter.format(new Date(item.dueDateTime));
     newRow.querySelector('.view-link').setAttribute("href", `viewTask.html?id=${item.id}`);
     newRow.querySelector('.edit-link').setAttribute("href", `editTask.html?id=${item.id}`);
     newRow.querySelector('.delete-link').setAttribute("data-id", `${item.id}`);
@@ -55,28 +62,7 @@ function populateTable(data) {
     });
   });
 
-  // Handle status dropdown change
-  document.querySelectorAll('.task-status-dropdown').forEach(function (dropdown) {
-    dropdown.addEventListener('change', function () {
-      var taskId = this.getAttribute('data-task-id');
-      var newStatus = this.value;
-
-      // Update status via REST API
-      fetch(`https://api.example.com/tasks/${taskId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ status: newStatus })
-      })
-        .then(response => {
-          if (!response.ok) {
-            console.error('Failed to update status');
-          }
-        })
-        .catch(error => console.error('Error updating status:', error));
-    });
-  });
+  
 }
 
 // Function to handle delete link click
@@ -111,9 +97,6 @@ document.getElementById('statusDropdown').addEventListener('change', function ()
   console.log('Selected status:', selectedValue);
   axios.get(`/api/task/filter-by-status?status=${selectedValue}`)
     .then(function (response) {
-      var templateRow = document.querySelector('template').content.querySelector('tr');
-      document.querySelector('tbody').innerHTML="";
-      document.createElement('tbody').innerHTML=templateRow;
       // Check if the response is successful and contains data
       if (response.status === 200 && response.data) { 
         var data = response.data; // Assuming your data is an array of objects
